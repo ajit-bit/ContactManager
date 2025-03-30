@@ -8,13 +8,15 @@ const {
     deleteContact 
 } = require("../controllers/contactControllers");
 
+// Routes for retrieving all contacts and creating a new contact
 router.route("/")
     .get(getContacts)
     .post(createContact);
 
+// Routes for operations on a specific contact by ID
 router.route("/:id")
     .get(getContact)
-    .put(updateContact)
-    .delete(deleteContact);  // Now using the imported controller function
+    .patch(updateContact)  // 🔄 Changed from .put() to .patch() for partial updates
+    .delete(deleteContact);  
 
 module.exports = router;
